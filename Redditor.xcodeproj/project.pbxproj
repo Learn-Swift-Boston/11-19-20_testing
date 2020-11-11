@@ -9,12 +9,15 @@
 /* Begin PBXBuildFile section */
 		6D03A0F2255B622F0027C1A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D03A0F1255B622F0027C1A4 /* AppDelegate.swift */; };
 		6D03A0F4255B622F0027C1A4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D03A0F3255B622F0027C1A4 /* SceneDelegate.swift */; };
-		6D03A0F6255B622F0027C1A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D03A0F5255B622F0027C1A4 /* ViewController.swift */; };
-		6D03A0F9255B622F0027C1A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D03A0F7255B622F0027C1A4 /* Main.storyboard */; };
 		6D03A0FB255B62300027C1A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D03A0FA255B62300027C1A4 /* Assets.xcassets */; };
 		6D03A0FE255B62300027C1A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D03A0FC255B62300027C1A4 /* LaunchScreen.storyboard */; };
 		6D03A109255B62300027C1A4 /* RedditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D03A108255B62300027C1A4 /* RedditorTests.swift */; };
 		6D03A114255B62300027C1A4 /* RedditorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D03A113255B62300027C1A4 /* RedditorUITests.swift */; };
+		6D03A12C255B62D00027C1A4 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D03A12B255B62D00027C1A4 /* ListViewController.swift */; };
+		6D03A131255B632B0027C1A4 /* PostsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D03A130255B632B0027C1A4 /* PostsTableViewController.swift */; };
+		6D03A136255B63570027C1A4 /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D03A135255B63570027C1A4 /* DrawerViewController.swift */; };
+		6D03A13C255B64C90027C1A4 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D03A13B255B64C90027C1A4 /* Models.swift */; };
+		6D03A142255B65980027C1A4 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D03A141255B65980027C1A4 /* Client.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +41,6 @@
 		6D03A0EE255B622F0027C1A4 /* Redditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Redditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D03A0F1255B622F0027C1A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6D03A0F3255B622F0027C1A4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6D03A0F5255B622F0027C1A4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		6D03A0F8255B622F0027C1A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6D03A0FA255B62300027C1A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6D03A0FD255B62300027C1A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6D03A0FF255B62300027C1A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +50,11 @@
 		6D03A10F255B62300027C1A4 /* RedditorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RedditorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D03A113255B62300027C1A4 /* RedditorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditorUITests.swift; sourceTree = "<group>"; };
 		6D03A115255B62300027C1A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D03A12B255B62D00027C1A4 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		6D03A130255B632B0027C1A4 /* PostsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsTableViewController.swift; sourceTree = "<group>"; };
+		6D03A135255B63570027C1A4 /* DrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
+		6D03A13B255B64C90027C1A4 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		6D03A141255B65980027C1A4 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +105,11 @@
 		6D03A0F0255B622F0027C1A4 /* Redditor */ = {
 			isa = PBXGroup;
 			children = (
+				6D03A140255B656F0027C1A4 /* Networking */,
+				6D03A13A255B637C0027C1A4 /* Models */,
+				6D03A12A255B626E0027C1A4 /* Views */,
 				6D03A0F1255B622F0027C1A4 /* AppDelegate.swift */,
 				6D03A0F3255B622F0027C1A4 /* SceneDelegate.swift */,
-				6D03A0F5255B622F0027C1A4 /* ViewController.swift */,
-				6D03A0F7255B622F0027C1A4 /* Main.storyboard */,
 				6D03A0FA255B62300027C1A4 /* Assets.xcassets */,
 				6D03A0FC255B62300027C1A4 /* LaunchScreen.storyboard */,
 				6D03A0FF255B62300027C1A4 /* Info.plist */,
@@ -126,6 +133,32 @@
 				6D03A115255B62300027C1A4 /* Info.plist */,
 			);
 			path = RedditorUITests;
+			sourceTree = "<group>";
+		};
+		6D03A12A255B626E0027C1A4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6D03A12B255B62D00027C1A4 /* ListViewController.swift */,
+				6D03A130255B632B0027C1A4 /* PostsTableViewController.swift */,
+				6D03A135255B63570027C1A4 /* DrawerViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6D03A13A255B637C0027C1A4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6D03A13B255B64C90027C1A4 /* Models.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6D03A140255B656F0027C1A4 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				6D03A141255B65980027C1A4 /* Client.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +266,6 @@
 			files = (
 				6D03A0FE255B62300027C1A4 /* LaunchScreen.storyboard in Resources */,
 				6D03A0FB255B62300027C1A4 /* Assets.xcassets in Resources */,
-				6D03A0F9255B622F0027C1A4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,9 +290,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D03A0F6255B622F0027C1A4 /* ViewController.swift in Sources */,
 				6D03A0F2255B622F0027C1A4 /* AppDelegate.swift in Sources */,
+				6D03A142255B65980027C1A4 /* Client.swift in Sources */,
+				6D03A131255B632B0027C1A4 /* PostsTableViewController.swift in Sources */,
+				6D03A136255B63570027C1A4 /* DrawerViewController.swift in Sources */,
+				6D03A13C255B64C90027C1A4 /* Models.swift in Sources */,
 				6D03A0F4255B622F0027C1A4 /* SceneDelegate.swift in Sources */,
+				6D03A12C255B62D00027C1A4 /* ListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,14 +332,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		6D03A0F7255B622F0027C1A4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6D03A0F8255B622F0027C1A4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		6D03A0FC255B62300027C1A4 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -446,7 +474,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mattdias.Redditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -465,7 +493,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mattdias.Redditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
