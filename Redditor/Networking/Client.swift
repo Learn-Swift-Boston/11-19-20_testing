@@ -20,8 +20,8 @@ private enum API {
 
 struct Client {
 
-    func fetch(subreddit: String, completion: @escaping (Result<Response, Error>) -> Void) {
-        URLSession.shared.dataTask(with: API.subreddit(subreddit).toURL()) { (data, _, error) in
+    func fetch(subreddit: String, completion: @escaping (Result<[Post], Error>) -> Void) {
+        URLSession.shared.dataTask(with: API.subreddit(subreddit).toURL()) { (data, res, error) in
             guard error == nil, data != nil else {
                 completion(.failure(error!))
                 return
@@ -30,10 +30,14 @@ struct Client {
             do {
                 let response = try JSONDecoder().decode(Response.self, from: data!)
 
-                completion(.success(response))
+                completion(.success(posts(from: response)))
             } catch {
                 completion(.failure(error))
             }
-        }
+        }.resume()
+    }
+
+    func posts(from response: Response) -> [Post] {
+        return response.data.children.map { $0.data }
     }
 }

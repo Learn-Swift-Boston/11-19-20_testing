@@ -23,11 +23,11 @@ struct ResponseData: Codable {
 // MARK: - Child
 struct Child: Codable {
     let kind: Kind
-    let data: ChildData
+    let data: Post
 }
 
-// MARK: - ChildData
-struct ChildData: Codable {
+// MARK: - Post
+struct Post: Codable {
     let approvedAtUTC: JSONNull?
     let subreddit: Subreddit
     let selftext, authorFullname: String
@@ -89,7 +89,7 @@ struct ChildData: Codable {
     let viewCount: JSONNull?
     let archived, noFollow, isCrosspostable, pinned: Bool
     let over18: Bool
-    let preview: DataPreview?
+    let preview: Preview?
     let allAwardings: [AllAwarding]
     let awarders: [JSONAny]
     let mediaOnly, canGild, spoiler, locked: Bool
@@ -118,6 +118,7 @@ struct ChildData: Codable {
     let subredditSubscribers, createdUTC, numCrossposts: Int
     let media: DataMedia?
     let isVideo: Bool
+    let authorCakeday: Bool?
     let crosspostParentList: [CrosspostParentList]?
     let crosspostParent: String?
 
@@ -221,6 +222,7 @@ struct ChildData: Codable {
         case numCrossposts = "num_crossposts"
         case media
         case isVideo = "is_video"
+        case authorCakeday = "author_cakeday"
         case crosspostParentList = "crosspost_parent_list"
         case crosspostParent = "crosspost_parent"
     }
@@ -249,7 +251,7 @@ struct AllAwarding: Codable {
     let subredditCoinReward, count, staticIconHeight: Int
     let name: String
     let resizedStaticIcons: [ResizedIcon]
-    let iconFormat: IconFormat?
+    let iconFormat: Format?
     let iconHeight: Int
     let pennyPrice: Int?
     let awardType: AwardType
@@ -290,6 +292,7 @@ struct AllAwarding: Codable {
 }
 
 enum AwardSubType: String, Codable {
+    case appreciation = "APPRECIATION"
     case global = "GLOBAL"
     case group = "GROUP"
     case premium = "PREMIUM"
@@ -299,7 +302,8 @@ enum AwardType: String, Codable {
     case global = "global"
 }
 
-enum IconFormat: String, Codable {
+enum Format: String, Codable {
+    case apng = "APNG"
     case png = "PNG"
 }
 
@@ -307,7 +311,7 @@ enum IconFormat: String, Codable {
 struct ResizedIcon: Codable {
     let url: String
     let width, height: Int
-    let format: String?
+    let format: Format?
 }
 
 // MARK: - TiersByRequiredAwarding
@@ -348,18 +352,18 @@ struct CrosspostParentList: Codable {
     let subredditNamePrefixed: String
     let hidden: Bool
     let pwls: Int
-    let linkFlairCSSClass: String
+    let linkFlairCSSClass: JSONNull?
     let downs, thumbnailHeight: Int
     let topAwardedType: JSONNull?
     let hideScore: Bool
     let name: String
     let quarantine: Bool
     let linkFlairTextColor: FlairTextColor
-    let upvoteRatio: Int
+    let upvoteRatio: Double
     let authorFlairBackgroundColor: JSONNull?
     let subredditType: SubredditType
     let ups, totalAwardsReceived: Int
-    let mediaEmbed: MediaEmbedClass
+    let mediaEmbed: MediaEmbed
     let thumbnailWidth: Int
     let authorFlairTemplateID: JSONNull?
     let isOriginalContent: Bool
@@ -367,8 +371,8 @@ struct CrosspostParentList: Codable {
     let secureMedia: CrosspostParentListMedia
     let isRedditMediaDomain, isMeta: Bool
     let category: JSONNull?
-    let secureMediaEmbed: MediaEmbedClass
-    let linkFlairText: String
+    let secureMediaEmbed: MediaEmbed
+    let linkFlairText: JSONNull?
     let canModPost: Bool
     let score: Int
     let approvedBy: JSONNull?
@@ -377,7 +381,7 @@ struct CrosspostParentList: Codable {
     let edited: Bool
     let authorFlairCSSClass: JSONNull?
     let authorFlairRichtext: [JSONAny]
-    let gildings: MediaEmbedClass
+    let gildings: CrosspostParentListGildings
     let postHint: PostHint
     let contentCategories: JSONNull?
     let isSelf: Bool
@@ -394,7 +398,7 @@ struct CrosspostParentList: Codable {
     let viewCount: JSONNull?
     let archived, noFollow, isCrosspostable, pinned: Bool
     let over18: Bool
-    let preview: CrosspostParentListPreview
+    let preview: Preview
     let allAwardings: [AllAwarding]
     let awarders: [JSONAny]
     let mediaOnly, canGild, spoiler, locked: Bool
@@ -527,100 +531,19 @@ struct CrosspostParentList: Codable {
     }
 }
 
-// MARK: - MediaEmbedClass
-struct MediaEmbedClass: Codable {
+// MARK: - CrosspostParentListGildings
+struct CrosspostParentListGildings: Codable {
+    let gid1: Int
+
+    enum CodingKeys: String, CodingKey {
+        case gid1 = "gid_1"
+    }
 }
 
 // MARK: - CrosspostParentListMedia
 struct CrosspostParentListMedia: Codable {
-    let redditVideo: RedditVideo
-
-    enum CodingKeys: String, CodingKey {
-        case redditVideo = "reddit_video"
-    }
-}
-
-// MARK: - RedditVideo
-struct RedditVideo: Codable {
-    let fallbackURL: String
-    let height, width: Int
-    let scrubberMediaURL: String
-    let dashURL: String
-    let duration: Int
-    let hlsURL: String
-    let isGIF: Bool
-    let transcodingStatus: TranscodingStatus
-
-    enum CodingKeys: String, CodingKey {
-        case fallbackURL = "fallback_url"
-        case height, width
-        case scrubberMediaURL = "scrubber_media_url"
-        case dashURL = "dash_url"
-        case duration
-        case hlsURL = "hls_url"
-        case isGIF = "is_gif"
-        case transcodingStatus = "transcoding_status"
-    }
-}
-
-enum TranscodingStatus: String, Codable {
-    case completed = "completed"
-}
-
-enum WhitelistStatus: String, Codable {
-    case allAds = "all_ads"
-}
-
-enum PostHint: String, Codable {
-    case hostedVideo = "hosted:video"
-    case image = "image"
-    case link = "link"
-    case richVideo = "rich:video"
-}
-
-// MARK: - CrosspostParentListPreview
-struct CrosspostParentListPreview: Codable {
-    let images: [PurpleImage]
-    let enabled: Bool
-}
-
-// MARK: - PurpleImage
-struct PurpleImage: Codable {
-    let source: ResizedIcon
-    let resolutions: [ResizedIcon]
-    let variants: MediaEmbedClass
-    let id: String
-}
-
-enum SubredditType: String, Codable {
-    case subredditTypePublic = "public"
-}
-
-// MARK: - DataGildings
-struct DataGildings: Codable {
-    let gid1, gid2, gid3: Int?
-
-    enum CodingKeys: String, CodingKey {
-        case gid1 = "gid_1"
-        case gid2 = "gid_2"
-        case gid3 = "gid_3"
-    }
-}
-
-enum LinkFlairCSSClass: String, Codable {
-    case lc = "lc"
-}
-
-// MARK: - DataMedia
-struct DataMedia: Codable {
-    let oembed: Oembed?
-    let type: String?
-    let redditVideo: RedditVideo?
-
-    enum CodingKeys: String, CodingKey {
-        case oembed, type
-        case redditVideo = "reddit_video"
-    }
+    let oembed: Oembed
+    let type: String
 }
 
 // MARK: - Oembed
@@ -664,20 +587,32 @@ struct MediaEmbed: Codable {
     }
 }
 
-// MARK: - DataPreview
-struct DataPreview: Codable {
-    let images: [FluffyImage]
-    let enabled: Bool
+enum WhitelistStatus: String, Codable {
+    case allAds = "all_ads"
+}
+
+enum PostHint: String, Codable {
+    case hostedVideo = "hosted:video"
+    case image = "image"
+    case link = "link"
+    case richVideo = "rich:video"
+}
+
+// MARK: - Preview
+struct Preview: Codable {
+    let images: [Image]
     let redditVideoPreview: RedditVideo?
+    let enabled: Bool
 
     enum CodingKeys: String, CodingKey {
-        case images, enabled
+        case images
         case redditVideoPreview = "reddit_video_preview"
+        case enabled
     }
 }
 
-// MARK: - FluffyImage
-struct FluffyImage: Codable {
+// MARK: - Image
+struct Image: Codable {
     let source: ResizedIcon
     let resolutions: [ResizedIcon]
     let variants: Variants
@@ -686,13 +621,63 @@ struct FluffyImage: Codable {
 
 // MARK: - Variants
 struct Variants: Codable {
-    let gif, mp4: GIF?
 }
 
-// MARK: - GIF
-struct GIF: Codable {
-    let source: ResizedIcon
-    let resolutions: [ResizedIcon]
+// MARK: - RedditVideo
+struct RedditVideo: Codable {
+    let fallbackURL: String
+    let height, width: Int
+    let scrubberMediaURL: String
+    let dashURL: String
+    let duration: Int
+    let hlsURL: String
+    let isGIF: Bool
+    let transcodingStatus: TranscodingStatus
+
+    enum CodingKeys: String, CodingKey {
+        case fallbackURL = "fallback_url"
+        case height, width
+        case scrubberMediaURL = "scrubber_media_url"
+        case dashURL = "dash_url"
+        case duration
+        case hlsURL = "hls_url"
+        case isGIF = "is_gif"
+        case transcodingStatus = "transcoding_status"
+    }
+}
+
+enum TranscodingStatus: String, Codable {
+    case completed = "completed"
+}
+
+enum SubredditType: String, Codable {
+    case subredditTypePublic = "public"
+}
+
+// MARK: - DataGildings
+struct DataGildings: Codable {
+    let gid1, gid2: Int?
+
+    enum CodingKeys: String, CodingKey {
+        case gid1 = "gid_1"
+        case gid2 = "gid_2"
+    }
+}
+
+enum LinkFlairCSSClass: String, Codable {
+    case lc = "lc"
+}
+
+// MARK: - DataMedia
+struct DataMedia: Codable {
+    let redditVideo: RedditVideo?
+    let oembed: Oembed?
+    let type: String?
+
+    enum CodingKeys: String, CodingKey {
+        case redditVideo = "reddit_video"
+        case oembed, type
+    }
 }
 
 enum Subreddit: String, Codable {
@@ -721,6 +706,10 @@ class JSONNull: Codable, Hashable {
 
     public var hashValue: Int {
         return 0
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        // No-op
     }
 
     public init() {}

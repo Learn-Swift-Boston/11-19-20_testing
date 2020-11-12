@@ -7,11 +7,15 @@
 
 import UIKit
 
-protocol SubredditDelegate {
-    
+protocol SubredditDelegate: NSObject {
+    var posts: [Post] { get }
+
+    func get(subreddit: String)
 }
 
 class DrawerViewController: UIViewController {
+
+    weak var delegate: SubredditDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,14 +24,16 @@ class DrawerViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
+    func calculateStats(posts: [Post]) -> (upSum: Int, downSum: Int) {
+        var upSum = 0
+        var downSum = 0
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        for post in posts {
+            upSum += post.ups
+            downSum += post.downs
+        }
+
+        return (upSum, downSum)
     }
-    */
 
 }
