@@ -30,4 +30,24 @@ class RedditorTests: XCTestCase {
         }
     }
 
+    func testSum() {
+        /*
+         given two inputs, an output is received that is input1 + input2
+         */
+
+        /* Gherkin test
+         given: some input
+         when: I do some operation
+         then: some expected result happens
+         */
+        let expectedOuput = 11
+
+        let actualOutput = sum(10, 1)
+
+        XCTAssertEqual(expectedOuput, actualOutput)
+    }
+}
+
+func sum(_ in1: Int, _ in2: Int) -> Int {
+    return in1 + in2
 }
