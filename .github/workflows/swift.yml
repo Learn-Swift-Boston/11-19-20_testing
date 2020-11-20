@@ -13,9 +13,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Print out simulators
-      run: xcrun instruments -s devices
     - name: Build
       run: xcodebuild -project Redditor.xcodeproj -scheme Redditor -sdk iphonesimulator build
     - name: Run tests
-      run: xcodebuild -project Redditor.xcodeproj -scheme Redditor -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 11 Pro Max (14.0)' test-without-building
+      run: xcodebuild -scheme "Redditor" -destination 'platform=iOS Simulator,name=iPhone 11 Pro Max,OS=14.0' test
