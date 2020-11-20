@@ -46,6 +46,8 @@ class DrawerViewController: UIViewController {
         topHStack.addArrangedSubview(subredditLabel)
         topHStack.addArrangedSubview(textfield)
 
+        upsLabel.accessibilityIdentifier = "ups label"
+        downsLabel.accessibilityIdentifier = "downs label"
         upsLabel.text = "?? total up votes"
         downsLabel.text = "?? total down votes"
         mainStack.addArrangedSubview(upsLabel)
